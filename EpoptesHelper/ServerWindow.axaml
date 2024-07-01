@@ -1,0 +1,186 @@
+<Window
+	xmlns="https://github.com/avaloniaui"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	mc:Ignorable="d" d:DesignWidth="700" d:DesignHeight="500"
+	x:Class="EpoptesHelper.ServerWindow"
+	Title="ServerWindow"
+	Height="500" Width="700"
+	CanResize="False"
+	x:CompileBindings="False">
+	<Grid
+		RowDefinitions="*, 60"
+		ColumnDefinitions="*,*,*">
+		<Image
+			Name="image_back"
+			Grid.ColumnSpan="3"
+			Grid.RowSpan="2"/>
+		<StackPanel
+			Grid.Column="1"
+			Grid.ColumnSpan="2"
+			Background="White" Margin="10"
+			Height="420">
+			<TextBlock
+				Text="Настройка серверной верии Epoptes"
+				FontSize="22" FontWeight="Bold" Margin="10"/>
+			<TabControl>
+				<TabItem
+					Header="Информация"
+					FontSize="15">
+					<ScrollViewer
+						Height="310">
+						<StackPanel
+							Margin="10">
+							<TextBlock
+								Text="Установка"
+								FontSize="18" FontWeight="Bold"
+								Margin="0 0 0 10"/>
+							<TextBlock
+								TextWrapping="Wrap">
+								Чтобы установить серверную версию Epoptes, нажмите на кнопку  
+								<Bold>&#34;Установить&#34;</Bold>.
+							</TextBlock>
+							<Button
+								Name="btn_serverInstall"
+								Content="Установить"
+								Click="ServerInstall"
+								Margin="10"/>
+							<TextBlock
+								Text="Настройка"
+								FontSize="18" FontWeight="Bold"
+								Margin="0 10"/>
+							<TextBlock
+								TextWrapping="Wrap">
+								<Bold>Добавление/удаление пользователя:</Bold>
+								Клиенты добавляются в группу автоматически, но чтобы пользовательтакже имел доступ к управлению другими, его необходимо добавить в группу.
+								Для этого необходимо ввести имя пользователя в поле
+								<Bold>&#34;Добавление пользователя&#34;</Bold> и нажать на кнопку <Bold>&#34;+&#34;</Bold>.
+								Добавленные пользователи будут выведены в списке <Bold>&#34;Добавленные пользователи&#34;</Bold>.
+								Чтобы удалить пользователя из группы, выделите его имя в списке и нажмите на кнопку <Bold>&#34;-&#34;</Bold>.								
+							</TextBlock>
+							<TextBlock
+								Margin="10"
+								TextWrapping="Wrap">
+								<Bold>Внимание!</Bold>
+								Рекомендуется добавлять в группу пользователей с отличными друг от друга именами.
+							</TextBlock>
+							<TextBlock
+								TextWrapping="Wrap">
+								<Bold>Получение IP:</Bold>
+								Чтобы клиенты могли подключиться к группе, им необходимо озвучить IP хоста.
+								Чтобы получть его, необходимо нажать на кнопку <Bold>&#34;Получить IP&#34;</Bold>.
+							</TextBlock>
+							<TextBlock
+								TextWrapping="Wrap"
+								Margin="0 10">
+								<Bold>Удаление программы:</Bold>
+								Чтобы удалить серверную версию Epoptes, нажмите на кнопку <Bold>&#34;Удалить Epoptes&#34;</Bold>
+							</TextBlock>
+						</StackPanel>
+					</ScrollViewer>					
+				</TabItem>
+				<TabItem
+					Header="Инструменты"
+					FontSize="15">
+					<StackPanel>
+						<StackPanel
+							Margin="10">
+							<TextBlock
+								Text="Добавленные пользователи"
+								HorizontalAlignment="Center"/>
+							<ListBox
+								Name="lbox_users"
+								Height="100" Width="300"
+								Margin="10">
+								<ListBox.ItemTemplate>
+									<DataTemplate>
+										<Border
+											BorderThickness="1"
+											BorderBrush="Black"
+											CornerRadius="5">
+											<Panel>
+												<TextBlock
+													Text="{Binding Name}"
+													HorizontalAlignment="Left"
+													Margin="10 0"/>
+												<Button
+													Name="btn_delUser"
+													Tag="{Binding Id}"
+													Content="-"
+													HorizontalAlignment="Right"
+													Click="DeleteUser"/>
+											</Panel>
+										</Border>
+									</DataTemplate>
+								</ListBox.ItemTemplate>
+							</ListBox>
+						</StackPanel>
+						<StackPanel
+							Margin="30 0">
+							<TextBlock
+								Text="Добавление пользователя:"/>
+							<StackPanel
+								Orientation="Horizontal"
+								Margin="10">
+								<TextBox
+									Name="tbox_username"
+									Text=""
+									Width="150"/>
+								<Button
+									Name="btn_addUser"
+									Content="+" VerticalAlignment="Center"
+									Click="AddUser"/>
+							</StackPanel>
+						</StackPanel>
+						<StackPanel
+							Orientation="Horizontal">
+							<StackPanel
+								Margin="30 0">
+								<TextBlock
+									Text="Получение IP:"/>
+								<StackPanel>
+									<TextBlock
+										Name="tblock_hostIp"
+										Text="___.___.___.___"
+										Margin="10 4"/>
+									<Button
+										Name="btn_getIp"
+										Content="Получить IP"
+										Click="GetHostIp"/>
+								</StackPanel>
+							</StackPanel>
+							<StackPanel
+								Margin="120 2 0 0">
+								<TextBlock
+									Text="Возникли вопросы?&#x0a; Нажмите &#34;Помощь&#34;."/>
+								<Button
+									Name="btn_help"
+									Content="Помощь" Margin="0 10"
+									Click="OpenInfo"/>
+							</StackPanel>
+						</StackPanel>
+					</StackPanel>
+				</TabItem>
+			</TabControl>
+		</StackPanel>
+		<Panel
+			Grid.Row="1"
+			Grid.ColumnSpan="3"
+			Background="LightGray">
+			<Button
+				Name="btn_back"
+				Content="Назад"
+				Click="BackToMain"
+				FontSize="18"
+				Margin="30 0"/>
+			<Button
+				Name="btn_serverEpoptesDelete"
+				Content="Удалить Epoptes"
+				FontSize="18"
+				Margin="30 0"
+				HorizontalAlignment="Right"
+				Click="DeleteServer"/>
+		</Panel>
+	</Grid>
+</Window>

@@ -1,0 +1,101 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" 
+        x:Class="EpoptesHelper.ClientWindow"
+        Title="ClientWindow" d:DesignWidth="700" d:DesignHeight="500"
+		Height="500" Width="700"
+		CanResize="False">
+	<Grid
+		RowDefinitions="*, 60"
+		ColumnDefinitions="*,*,*">
+		<Image
+			Name="image_back"
+			Grid.ColumnSpan="3"
+			Grid.RowSpan="2"/>
+		<StackPanel
+			Grid.Column="1"
+			Grid.ColumnSpan="2"
+			Background="White" Margin="10"
+			Height="420">
+			<TextBlock
+				Text="Установка клиентской верии Epoptes"
+				FontSize="22" FontWeight="Bold" Margin="10"/>
+			<StackPanel
+				Margin="10">
+				<TextBlock
+					Text="1. Нажмите &#34;Установить&#34;"/>
+				<Button
+					Name="btn_install"
+					Content="Установить"
+					Click="InstallClient"
+					Margin="10"/>
+				<TextBlock
+					Text="2. Введите IP-адрес хоста"/>
+				<MaskedTextBox
+					Name="mtbox_userIp"
+					KeyUp="IpInput"
+					Mask="###\.###\.###\.###"
+					Width="130"
+					Margin="10"
+					HorizontalAlignment="Left"/>
+				<TextBlock
+					Name="tblock_incorrectIp"
+					Foreground="Red"
+					Text="IP введен некорректно!"
+					IsVisible="False"
+					Margin="10 0"/>
+			</StackPanel>
+			<TextBlock
+				Text="3. Нажмите &#34;Добавить хоста&#34;." Margin="10 0"/>
+			<Button
+				Name="btn_addHost"
+				Content="Добавить хоста"
+				Margin="10"
+				Click="AddHost"/>
+			<TextBlock
+				Text="4. Нажмите  &#34;Перезагрузка&#34;." Margin="10 0"/>
+			<Button
+				Name="btn_reboot" Margin="10"
+				Click="Reboot"
+				Content="Перезагрузка"/>
+			<StackPanel
+				Margin="10">
+				<TextBlock
+					Text="Возникли вопросы? Нажмите &#34;Помощь&#34;."/>
+				<Button
+					Name="btn_help"
+					Content="Помощь" Margin="0 10"
+					Click="OpenInfo"/>
+			</StackPanel>
+		</StackPanel>
+		<StackPanel
+			Grid.Column="1"
+			Grid.ColumnSpan="2"
+			HorizontalAlignment="Right"
+			Margin="50 135">
+			<TextBlock
+				Name="tblock_insertedIp"
+				IsVisible="False"/>
+		</StackPanel>
+		<Panel
+			Grid.Row="1"
+			Grid.ColumnSpan="3"
+			Background="LightGray">
+			<Button
+				Name="btn_back"
+				Content="Назад"
+				Click="BackToMain"
+				FontSize="18"
+				Margin="30 0"/>
+			<Button
+				Name="btn_clientEpoptesDelete"
+				Content="Удалить Epoptes"
+				FontSize="18"
+				Margin="30 0"
+				HorizontalAlignment="Right"
+				Click="ClientDelete"/>
+		</Panel>
+	</Grid>
+</Window>

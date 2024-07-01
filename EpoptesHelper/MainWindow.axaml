@@ -1,0 +1,64 @@
+<Window
+	xmlns="https://github.com/avaloniaui"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	mc:Ignorable="d"
+	x:Class="EpoptesHelper.MainWindow"
+	Title="EpoptesHelper"
+	d:DesignWidth="700" d:DesignHeight="500"
+	Height="500" Width="700"
+	CanResize="False">	
+	<Grid
+		RowDefinitions="*, 60"
+		ColumnDefinitions="*,*,*">
+		<Image
+			Name="image_back"
+			Grid.ColumnSpan="3"
+			Grid.RowSpan="2"/>
+		<StackPanel
+			Grid.Column="1"
+			Grid.ColumnSpan="2"
+			Background="White" Margin="10">
+			<TextBlock
+				Text="Добро пожаловать в EpoptesHelper - установщик и настройщик Epoptes"
+				FontSize="22" FontWeight="Bold"
+				TextWrapping="Wrap"
+				Margin="10"/>
+			<TextBlock
+				Text="EpoptesHelper установит на ваш компьютер инструмент для управления компьютерным классом Epoptes. Чтобы продолжить, выберите, какую версию Вы хотите установить - клиентскую или серверную."
+				TextWrapping="Wrap"
+				Margin="10" FontSize="16"/>
+			<StackPanel>
+				<TextBlock
+					Text="Если у Вас возникли вопросы относитльно установки или назначения программы, нажмите на кнопку &#34;Помощь&#34;"
+					TextWrapping="Wrap" Margin="10"/>
+				<Button
+					Name="btn_help"
+					Content="Помощь"
+					Margin="10 0"
+					Click="OpenInfo"/>
+			</StackPanel>
+			<TextBlock
+				Text="ПРЕДУПРЕЖДЕНИЕ: установщик работает некорректно при отсутствии репозиториев Debian. Перед установкой рекомендуется  проверить наличие данных дистрибутив в системе."
+				TextWrapping="Wrap"
+				Margin="10 25 0 0"/>
+		</StackPanel>
+		<Panel
+			Grid.Row="1"
+			Grid.ColumnSpan="3"
+			Background="LightGray">
+			<StackPanel
+				HorizontalAlignment="Right"
+				Orientation="Horizontal"
+				Margin="30 0">
+				<Button
+					Name="btn_client" Content="Для пользователя" FontSize="18"
+					Click="GetToInstall"/>
+				<Button
+					Name="btn_server" Content="Для сервера" FontSize="18"
+					Click="GetToInstall"/>
+			</StackPanel>
+		</Panel>
+	</Grid>
+</Window>

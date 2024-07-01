@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AvaloniaProject">
+    <option name="projectPerEditor">
+      <map>
+        <entry key="EpoptesHelper/ClientWindow.axaml" value="EpoptesHelper/EpoptesHelper.csproj" />
+        <entry key="EpoptesHelper/InfoWindow.axaml" value="EpoptesHelper/EpoptesHelper.csproj" />
+        <entry key="EpoptesHelper/MainWindow.axaml" value="EpoptesHelper/EpoptesHelper.csproj" />
+        <entry key="EpoptesHelper/ServerWindow.axaml" value="EpoptesHelper/EpoptesHelper.csproj" />
+      </map>
+    </option>
+  </component>
+</project>
